@@ -1,0 +1,29 @@
+CREATE TABLE Cliente (
+ id_cliente INT PRIMARY KEY,
+ nome VARCDHAR(100),
+ email VARCHAR(100),
+ telefone VARCHAR(20)
+);
+
+CREATE TABLE Produto (
+ id_produto INT PRIMARY KEY,
+ nome_produto VARCHAR(100),
+ preco DECIMAL(10,2)
+ quantidade_estoque INT
+);
+
+CREATE TABLE Pedido (
+ id_pedido INT PRIMARY KEY,
+ data_pedido DATE,
+ id_cliente INT,
+ FOREIGN KEY (id_cliente) REFERENCES Cleinte(id_cliente)
+);
+
+CREATE TABLE Item_Pedido (
+ id_item INT PRIMARY KEY,
+ quantidade INT,
+ id_pedido INT,
+ id_produto INT,
+ FOREIGN KEY (id_pedido) REFERENCES Pedido(id_pedido)
+ FOREIGN KEY (id_produto) REFERENCES Produti(id_produto)
+);
